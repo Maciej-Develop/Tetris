@@ -28,7 +28,9 @@ else()
     message(STATUS "Using local ${LIB1}")
 endif()
 
-add_executable(Tetris main.cpp)
+add_executable(Tetris main.cpp
+        model/Grid.cpp
+        model/Grid.h)
 
 # set the include directory
 target_include_directories(Tetris PRIVATE ${raylib_INCLUDE_DIRS})
