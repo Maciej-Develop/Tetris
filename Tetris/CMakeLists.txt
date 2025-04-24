@@ -30,7 +30,11 @@ endif()
 
 add_executable(Tetris main.cpp
         model/Grid.cpp
-        model/Grid.h)
+        model/Grid.h
+        view/view.cpp
+        view/view.h
+        dp/Observer.h
+        dp/Observable.h)
 
 # set the include directory
 target_include_directories(Tetris PRIVATE ${raylib_INCLUDE_DIRS})

@@ -3,6 +3,8 @@
 #include <array>
 #include <vector>
 
+#include "raylib.h"
+
 
 class Grid {
 
@@ -10,6 +12,7 @@ class Grid {
     int cols;
     int cellSize;
     std::vector<std::vector<int>> grid;
+    std::vector<Color> colors;
 
 public:
 
@@ -17,6 +20,8 @@ public:
 
 // to remove
     void print();
+    static std::vector<Color> getColors();
+    void draw();
 };
 
 

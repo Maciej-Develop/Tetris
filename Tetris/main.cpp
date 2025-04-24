@@ -9,11 +9,11 @@ int main() {
     Color myColor = {44,44,127,255};
 
     Grid grid;
-    grid.print();
 
     while (!WindowShouldClose()) {
         BeginDrawing();
         ClearBackground(myColor);
+        grid.draw();
 
         EndDrawing();
     }
