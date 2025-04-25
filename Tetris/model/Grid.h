@@ -20,7 +20,6 @@ public:
 
 // to remove
     void print();
-    static std::vector<Color> getColors();
     void draw();
 };
 

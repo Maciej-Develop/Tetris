@@ -1,5 +1,6 @@
 #include "raylib.h"
 #include "model/Grid.h"
+#include "model/blocks/LBlock.h"
 
 int main() {
 
@@ -9,11 +10,13 @@ int main() {
     Color myColor = {44,44,127,255};
 
     Grid grid;
+    LBlock block;
 
     while (!WindowShouldClose()) {
         BeginDrawing();
         ClearBackground(myColor);
         grid.draw();
+        block.draw();
 
         EndDrawing();
     }

@@ -3,21 +3,23 @@
 #include <map>
 #include <vector>
 
+#include "../utils/Colors.h"
 #include "../utils/Position.h"
 
 
 class Block {
-
-    int id;
     int cellsize;
     int rotattionState;
+    std::vector<Color> colors;
+
+protected:
+    int color;
     std::pmr::map<int, std::vector<Position>> cells;
 
 public:
-
     Block();
 
-    int getId() const;
+    void draw();
 };
 
 
