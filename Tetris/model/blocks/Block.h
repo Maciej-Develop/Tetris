@@ -8,9 +8,11 @@
 
 
 class Block {
-    int cellsize;
-    int rotattionState;
+    int cellSize;
+    int rotationState;
     std::vector<Color> colors;
+    int rowOffset;
+    int colOffset;
 
 protected:
     int color;
@@ -20,6 +22,10 @@ public:
     Block();
 
     void draw();
+
+    void move(int x, int y);
+
+    std::vector<Position> getPositions();
 };
 
 
