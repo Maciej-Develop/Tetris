@@ -3,11 +3,10 @@
 #include "model/blocks/LBlock.h"
 
 int main() {
-
-    InitWindow(300,600, "Tetris");
+    InitWindow(300, 600, "Tetris");
     SetTargetFPS(60);
 
-    Color myColor = {44,44,127,255};
+    Color myColor = {44, 44, 127, 255};
 
     Grid grid;
     LBlock block;

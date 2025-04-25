@@ -14,7 +14,7 @@ class Block {
 
 protected:
     int color;
-    std::pmr::map<int, std::vector<Position>> cells;
+    std::pmr::map<int, std::vector<Position> > cells;
 
 public:
     Block();

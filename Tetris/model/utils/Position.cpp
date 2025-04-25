@@ -12,4 +12,3 @@ int Position::getRow() const {
 int Position::getCol() const {
     return this->col;
 }
-

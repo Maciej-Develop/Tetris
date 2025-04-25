@@ -7,14 +7,10 @@
 #include "Block.h"
 
 
-class LBlock: public Block {
-
-    public:
-
-        LBlock();
-
+class LBlock : public Block {
+public:
+    LBlock();
 };
-
 
 
 #endif //LBLOCK_H

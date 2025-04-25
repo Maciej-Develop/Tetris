@@ -7,19 +7,18 @@
 
 
 class Grid {
-
     int rows;
     int cols;
     int cellSize;
-    std::vector<std::vector<int>> grid;
+    std::vector<std::vector<int> > grid;
     std::vector<Color> colors;
 
 public:
-
     Grid();
 
-// to remove
+    // to remove
     void print();
+
     void draw();
 };
 
