@@ -1,4 +1,5 @@
 #include "raylib.h"
+#include "model/Game.h"
 #include "model/Grid.h"
 #include "model/blocks/IBlock.h"
 #include "model/blocks/ZBlock.h"
@@ -9,15 +10,12 @@ int main() {
 
     Color myColor = {44, 44, 127, 255};
 
-    Grid grid;
-    IBlock block;
+    Game game;
 
     while (!WindowShouldClose()) {
         BeginDrawing();
         ClearBackground(myColor);
-        grid.draw();
-        block.draw();
-
+        game.draw();
         EndDrawing();
     }
 
