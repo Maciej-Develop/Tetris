@@ -1,8 +1,6 @@
 #include "raylib.h"
 #include "model/Grid.h"
-#include "model/blocks/IBlock.h"
-#include "model/blocks/JBlock.h"
-#include "model/blocks/LBlock.h"
+#include "model/blocks/ZBlock.h"
 
 int main() {
     InitWindow(300, 600, "Tetris");
@@ -11,7 +9,7 @@ int main() {
     Color myColor = {44, 44, 127, 255};
 
     Grid grid;
-    IBlock block;
+    ZBlock block;
 
     while (!WindowShouldClose()) {
         BeginDrawing();

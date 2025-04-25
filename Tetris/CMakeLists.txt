@@ -42,7 +42,15 @@ add_executable(Tetris main.cpp
         model/blocks/JBlock.cpp
         model/blocks/JBlock.h
         model/blocks/IBlock.cpp
-        model/blocks/IBlock.h)
+        model/blocks/IBlock.h
+        model/blocks/OBlock.cpp
+        model/blocks/OBlock.h
+        model/blocks/SBlock.cpp
+        model/blocks/SBlock.h
+        model/blocks/TBlock.cpp
+        model/blocks/TBlock.h
+        model/blocks/ZBlock.cpp
+        model/blocks/ZBlock.h)
 
 # set the include directory
 target_include_directories(Tetris PRIVATE ${raylib_INCLUDE_DIRS})
