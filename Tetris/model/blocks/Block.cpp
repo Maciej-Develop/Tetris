@@ -24,7 +24,7 @@ void Block::move(int rows, int cols) {
 
 std::vector<Position> Block::getPositions() {
     std::vector<Position> positions;
-    std::ranges::for_each(cells[rotationState], [&](const Position& p) {
+    std::ranges::for_each(cells[rotationState], [&](const Position &p) {
         const Position newPosition(p.getRow() + rowOffset, p.getCol() + colOffset);
         positions.push_back(newPosition);
     });
