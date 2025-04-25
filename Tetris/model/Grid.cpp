@@ -31,7 +31,7 @@ std::vector<Color> Grid::getColors() {
     Color cyan = {21, 204, 209, 255};
     Color blue = {13, 64, 216, 255};
 
-    return {darkGrey, green, red, yellow, purple, cyan, blue};
+    return {darkGrey, green, red, orange, yellow, purple, cyan, blue};
 }
 
 void Grid::draw() {
