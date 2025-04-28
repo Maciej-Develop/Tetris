@@ -13,6 +13,13 @@ Grid::Grid() {
     colors = getColors();
 }
 
+bool Grid::isInside(int row, int col) {
+    if (row < 0 || row >= rows || col < 0 || col >= cols) {
+        return false;
+    }
+    return true;
+}
+
 //to remove
 void Grid::print() {
     std::ranges::for_each(grid, [](const std::vector<int> &row) {

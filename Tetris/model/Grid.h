@@ -16,6 +16,8 @@ class Grid {
 public:
     Grid();
 
+    bool isInside(int row, int col);
+
     // to remove
     void print();
 

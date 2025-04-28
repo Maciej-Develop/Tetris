@@ -16,6 +16,18 @@ public:
     Block getBlock();
 
     void draw();
+
+    void handleInput();
+
+    void moveBlockUp();
+
+    void moveBlockDown();
+
+    void moveBlockLeft();
+
+    void moveBlockRight();
+
+    bool isBlockInside();
 };
 
 
