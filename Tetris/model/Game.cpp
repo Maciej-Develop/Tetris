@@ -35,13 +35,17 @@ void Game::draw() {
 void Game::handleInput() {
     int key = GetKeyPressed();
     switch (key) {
-        case KEY_UP: moveBlockUp();
+        case KEY_W: moveBlockUp();
             break;
-        case KEY_DOWN: moveBlockDown();
+        case KEY_S: moveBlockDown();
             break;
-        case KEY_RIGHT: moveBlockRight();
+        case KEY_D: moveBlockRight();
             break;
-        case KEY_LEFT: moveBlockLeft();
+        case KEY_A: moveBlockLeft();
+            break;
+        case KEY_Q: rotateBlockClock();
+            break;
+        case KEY_E: rotateBlockCounterClock();
             break;
         default:
             break;
@@ -51,37 +55,51 @@ void Game::handleInput() {
 void Game::moveBlockUp() {
     currentBlock.move(-1, 0);
     if (!isBlockInside()) {
-        moveBlockDown();
+        currentBlock.move(1, 0);
     }
 }
 
 void Game::moveBlockDown() {
     currentBlock.move(1, 0);
     if (!isBlockInside()) {
-        moveBlockUp();
+        currentBlock.move(-1, 0);
     }
 }
 
 void Game::moveBlockLeft() {
     currentBlock.move(0, -1);
     if (!isBlockInside()) {
-        moveBlockRight();
+        currentBlock.move(0, 1);
     }
 }
 
 void Game::moveBlockRight() {
     currentBlock.move(0, 1);
     if (!isBlockInside()) {
-        moveBlockLeft();
+        currentBlock.move(0, -1);
     }
 }
 
 bool Game::isBlockInside() {
     std::vector<Position> positions = currentBlock.getPositions();
-    for (Position p : positions) {
-        if (!grid.isInside(p.getRow(),p.getCol())) {
+    for (Position p: positions) {
+        if (!grid.isInside(p.getRow(), p.getCol())) {
             return false;
         }
     }
     return true;
+}
+
+void Game::rotateBlockClock() {
+    currentBlock.rotateClock();
+    if (!isBlockInside()) {
+        currentBlock.rotateCounterClock();
+    }
+}
+
+void Game::rotateBlockCounterClock() {
+    currentBlock.rotateCounterClock();
+    if (!isBlockInside()) {
+        currentBlock.rotateClock();
+    }
 }

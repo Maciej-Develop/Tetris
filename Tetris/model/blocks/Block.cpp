@@ -30,3 +30,17 @@ std::vector<Position> Block::getPositions() {
     });
     return positions;
 }
+
+void Block::rotateClock() {
+    rotationState++;
+    if (rotationState == cells.size()) {
+        rotationState = 0;
+    }
+}
+
+void Block::rotateCounterClock() {
+    rotationState--;
+    if (rotationState == -1) {
+        rotationState = cells.size() - 1;
+    }
+}

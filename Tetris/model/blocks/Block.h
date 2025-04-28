@@ -26,6 +26,10 @@ public:
     void move(int x, int y);
 
     std::vector<Position> getPositions();
+
+    void rotateClock();
+
+    void rotateCounterClock();
 };
 
 

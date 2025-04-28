@@ -28,6 +28,10 @@ public:
     void moveBlockRight();
 
     bool isBlockInside();
+
+    void rotateBlockClock();
+
+    void rotateBlockCounterClock();
 };
 
 
