@@ -31,6 +31,37 @@ void Grid::setGridCell(Position p, int color) {
     grid[p.getRow()][p.getCol()] = color;
 }
 
+int Grid::clearFullRows() {
+    int completed = 0;
+    for (int row = rows - 1; row >= 0; row--) {
+        if (isRowFull(row)) {
+            clearRow(row);
+            completed++;
+        } else if (completed > 0) {
+            moveRow(row,completed);
+        }
+    }
+    return completed;
+}
+
+bool Grid::isRowFull(int row) {
+    for (int col = 0; col < cols; col++) {
+        if (grid[row][col] == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+void Grid::clearRow(int row) {
+    std::ranges::fill(grid[row], 0);
+}
+
+void Grid::moveRow(int row, int numRows) {
+    std::ranges::copy(grid[row], grid[row+numRows].begin());
+    std::ranges::fill(grid[row], 0);
+}
+
 //to remove
 void Grid::print() {
     std::ranges::for_each(grid, [](const std::vector<int> &row) {

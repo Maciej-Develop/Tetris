@@ -13,6 +13,12 @@ class Grid {
     std::vector<std::vector<int> > grid;
     std::vector<Color> colors;
 
+    bool isRowFull(int row);
+
+    void clearRow(int row);
+
+    void moveRow(int row, int numRows);
+
 public:
     Grid();
 
@@ -21,6 +27,8 @@ public:
     bool isEmpty(int row, int col) const;
 
     void setGridCell(Position p, int color);
+
+    int clearFullRows();
 
     // to remove
     void print();

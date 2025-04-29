@@ -122,4 +122,5 @@ void Game::lockBlock() {
     });
     currentBlock = nextBlock;
     nextBlock = getBlock();
+    grid.clearFullRows();
 }
