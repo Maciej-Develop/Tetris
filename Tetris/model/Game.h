@@ -9,6 +9,7 @@ class Game {
     std::vector<Block> blocks;
     Block currentBlock;
     Block nextBlock;
+    bool gameOver;
 
 public:
     Game();
@@ -16,6 +17,8 @@ public:
     Block getBlock();
 
     void draw();
+
+    void restart();
 
     void handleInput();
 

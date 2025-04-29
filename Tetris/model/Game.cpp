@@ -16,6 +16,7 @@ Game::Game() {
     blocks = {IBlock(), JBlock(), LBlock(), OBlock(), SBlock(), TBlock(), ZBlock()};
     currentBlock = getBlock();
     nextBlock = getBlock();
+    gameOver = false;
 }
 
 Block Game::getBlock() {
@@ -33,8 +34,19 @@ void Game::draw() {
     currentBlock.draw();
 }
 
+void Game::restart() {
+    grid.restart();
+    blocks = {IBlock(), JBlock(), LBlock(), OBlock(), SBlock(), TBlock(), ZBlock()};
+    currentBlock = getBlock();
+    nextBlock = getBlock();
+}
+
 void Game::handleInput() {
     int key = GetKeyPressed();
+    if (gameOver && key != 0) {
+        gameOver = false;
+        restart();
+    }
     switch (key) {
         case KEY_W: moveBlockUp();
             break;
@@ -54,31 +66,39 @@ void Game::handleInput() {
 }
 
 void Game::moveBlockUp() {
-    currentBlock.move(-1, 0);
-    if (!isBlockInside()) {
-        currentBlock.move(1, 0);
+    if (!gameOver) {
+        currentBlock.move(-1, 0);
+        if (!isBlockInside()) {
+            currentBlock.move(1, 0);
+        }
     }
 }
 
 void Game::moveBlockDown() {
-    currentBlock.move(1, 0);
-    if (!isBlockInside() || isBlockTouched()) {
-        currentBlock.move(-1, 0);
-        lockBlock();
+    if (!gameOver) {
+        currentBlock.move(1, 0);
+        if (!isBlockInside() || isBlockTouched()) {
+            currentBlock.move(-1, 0);
+            lockBlock();
+        }
     }
 }
 
 void Game::moveBlockLeft() {
-    currentBlock.move(0, -1);
-    if (!isBlockInside() || isBlockTouched()) {
-        currentBlock.move(0, 1);
+    if (!gameOver) {
+        currentBlock.move(0, -1);
+        if (!isBlockInside() || isBlockTouched()) {
+            currentBlock.move(0, 1);
+        }
     }
 }
 
 void Game::moveBlockRight() {
-    currentBlock.move(0, 1);
-    if (!isBlockInside() || isBlockTouched()) {
-        currentBlock.move(0, -1);
+    if (!gameOver) {
+        currentBlock.move(0, 1);
+        if (!isBlockInside() || isBlockTouched()) {
+            currentBlock.move(0, -1);
+        }
     }
 }
 
@@ -121,6 +141,9 @@ void Game::lockBlock() {
         grid.setGridCell(p,currentBlock.getColor());
     });
     currentBlock = nextBlock;
+    if (isBlockTouched()) {
+        gameOver = true;
+    }
     nextBlock = getBlock();
     grid.clearFullRows();
 }

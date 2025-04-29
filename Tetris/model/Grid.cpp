@@ -13,6 +13,10 @@ Grid::Grid() {
     colors = getColors();
 }
 
+void Grid::restart() {
+    grid = std::vector(rows, std::vector(cols, 0));
+}
+
 bool Grid::isInside(int row, int col) {
     if (row < 0 || row >= rows || col < 0 || col >= cols) {
         return false;

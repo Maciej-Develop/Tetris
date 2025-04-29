@@ -22,6 +22,8 @@ class Grid {
 public:
     Grid();
 
+    void restart();
+
     bool isInside(int row, int col);
 
     bool isEmpty(int row, int col) const;
