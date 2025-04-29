@@ -1,9 +1,9 @@
 #ifndef GRID_H
 #define GRID_H
-#include <array>
 #include <vector>
 
 #include "raylib.h"
+#include "utils/Position.h"
 
 
 class Grid {
@@ -17,6 +17,8 @@ public:
     Grid();
 
     bool isInside(int row, int col);
+
+    void setGridCell(Position p, int color);
 
     // to remove
     void print();

@@ -1,6 +1,7 @@
 #include "Game.h"
 
 #include <random>
+#include <algorithm>
 
 #include "blocks/IBlock.h"
 #include "blocks/JBlock.h"
@@ -63,6 +64,7 @@ void Game::moveBlockDown() {
     currentBlock.move(1, 0);
     if (!isBlockInside()) {
         currentBlock.move(-1, 0);
+        lockBlock();
     }
 }
 
@@ -102,4 +104,13 @@ void Game::rotateBlockCounterClock() {
     if (!isBlockInside()) {
         currentBlock.rotateClock();
     }
+}
+
+void Game::lockBlock() {
+    std::vector<Position> positions = currentBlock.getPositions();
+    std::ranges::for_each(positions, [&](Position p) {
+        grid.setGridCell(p,currentBlock.getColor());
+    });
+    currentBlock = nextBlock;
+    nextBlock = getBlock();
 }

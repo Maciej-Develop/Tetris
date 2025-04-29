@@ -21,6 +21,8 @@ protected:
 public:
     Block();
 
+    const int& getColor() const;
+
     void draw();
 
     void move(int x, int y);

@@ -20,6 +20,10 @@ bool Grid::isInside(int row, int col) {
     return true;
 }
 
+void Grid::setGridCell(Position p, int color) {
+    grid[p.getRow()][p.getCol()] = color;
+}
+
 //to remove
 void Grid::print() {
     std::ranges::for_each(grid, [](const std::vector<int> &row) {

@@ -32,6 +32,8 @@ public:
     void rotateBlockClock();
 
     void rotateBlockCounterClock();
+
+    void lockBlock();
 };
 
 

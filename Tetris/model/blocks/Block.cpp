@@ -10,6 +10,10 @@ Block::Block() {
     colors = getColors();
 }
 
+const int & Block::getColor() const {
+    return this->color;
+}
+
 void Block::draw() {
     const std::vector<Position> &block = getPositions();
     for (auto p: block) {
