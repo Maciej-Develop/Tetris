@@ -14,6 +14,8 @@ class Game {
 public:
     Game();
 
+    bool isGameOver() const;
+
     Block getBlock();
 
     void draw();

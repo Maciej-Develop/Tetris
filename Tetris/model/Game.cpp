@@ -19,6 +19,10 @@ Game::Game() {
     gameOver = false;
 }
 
+bool Game::isGameOver() const {
+    return gameOver;
+}
+
 Block Game::getBlock() {
     if (blocks.empty()) {
         blocks = {IBlock(), JBlock(), LBlock(), OBlock(), SBlock(), TBlock(), ZBlock()};

@@ -80,7 +80,7 @@ void Grid::draw() {
     for (int row = 0; row < rows; row++) {
         for (int col = 0; col < cols; col++) {
             int value = grid[row][col];
-            DrawRectangle(col * cellSize + 1, row * cellSize + 1, cellSize - 1, cellSize - 1, colors[value]);
+            DrawRectangle(col * cellSize + 11, row * cellSize + 11, cellSize - 1, cellSize - 1, colors[value]);
         }
     }
 }

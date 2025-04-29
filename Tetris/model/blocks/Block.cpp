@@ -17,7 +17,7 @@ const int & Block::getColor() const {
 void Block::draw() {
     const std::vector<Position> &block = getPositions();
     for (auto p: block) {
-        DrawRectangle(p.getCol() * cellSize + 1, p.getRow() * cellSize + 1, cellSize - 1, cellSize - 1, colors[color]);
+        DrawRectangle(p.getCol() * cellSize + 11, p.getRow() * cellSize + 11, cellSize - 1, cellSize - 1, colors[color]);
     }
 }
 
