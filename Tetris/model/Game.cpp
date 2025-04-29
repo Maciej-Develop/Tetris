@@ -62,7 +62,7 @@ void Game::moveBlockUp() {
 
 void Game::moveBlockDown() {
     currentBlock.move(1, 0);
-    if (!isBlockInside()) {
+    if (!isBlockInside() || isBlockTouched()) {
         currentBlock.move(-1, 0);
         lockBlock();
     }
@@ -70,14 +70,14 @@ void Game::moveBlockDown() {
 
 void Game::moveBlockLeft() {
     currentBlock.move(0, -1);
-    if (!isBlockInside()) {
+    if (!isBlockInside() || isBlockTouched()) {
         currentBlock.move(0, 1);
     }
 }
 
 void Game::moveBlockRight() {
     currentBlock.move(0, 1);
-    if (!isBlockInside()) {
+    if (!isBlockInside() || isBlockTouched()) {
         currentBlock.move(0, -1);
     }
 }
@@ -92,16 +92,25 @@ bool Game::isBlockInside() {
     return true;
 }
 
+bool Game::isBlockTouched() {
+    for (auto& p: currentBlock.getPositions()) {
+        if (!grid.isEmpty(p.getRow(), p.getCol())) {
+            return true;
+        }
+    }
+    return false;
+}
+
 void Game::rotateBlockClock() {
     currentBlock.rotateClock();
-    if (!isBlockInside()) {
+    if (!isBlockInside() || isBlockTouched()) {
         currentBlock.rotateCounterClock();
     }
 }
 
 void Game::rotateBlockCounterClock() {
     currentBlock.rotateCounterClock();
-    if (!isBlockInside()) {
+    if (!isBlockInside() || isBlockTouched()) {
         currentBlock.rotateClock();
     }
 }

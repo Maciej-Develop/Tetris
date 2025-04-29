@@ -29,6 +29,8 @@ public:
 
     bool isBlockInside();
 
+    bool isBlockTouched();
+
     void rotateBlockClock();
 
     void rotateBlockCounterClock();

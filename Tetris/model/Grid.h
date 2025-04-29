@@ -18,6 +18,8 @@ public:
 
     bool isInside(int row, int col);
 
+    bool isEmpty(int row, int col) const;
+
     void setGridCell(Position p, int color);
 
     // to remove

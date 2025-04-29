@@ -20,6 +20,13 @@ bool Grid::isInside(int row, int col) {
     return true;
 }
 
+bool Grid::isEmpty(int row, int col) const {
+    if (grid[row][col] == 0) {
+        return true;
+    }
+    return false;
+}
+
 void Grid::setGridCell(Position p, int color) {
     grid[p.getRow()][p.getCol()] = color;
 }
