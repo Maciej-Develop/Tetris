@@ -1,20 +1,15 @@
-#include <iostream>
 #include <raylib.h>
+#include "constants.h"
 
 int main() {
-    const Color darkGreen = {20, 160, 133, 255};
 
-    constexpr int screenWidth = 800;
-    constexpr int screenHeight = 600;
-
-
-    InitWindow(screenWidth, screenHeight, "My first RAYLIB program!");
+    InitWindow(constant::WIDTH, constant::HEIGHT, "My Tetris");
     SetTargetFPS(60);
 
     while (!WindowShouldClose())
     {
         BeginDrawing();
-        ClearBackground(darkGreen);
+        ClearBackground(constant::DARK_BLUE);
         EndDrawing();
     }
 
