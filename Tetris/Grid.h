@@ -1,21 +1,28 @@
 #ifndef TETRIS_GRID_H
 #define TETRIS_GRID_H
-#include <array>
 
+#include <array>
+#include <vector>
 #include "constants.h"
 
 
 class Grid {
+private:
+    std::array<std::array<int, constant::COLUMNS>, constant::ROWS> grid;
+    std::vector<Color> colors;
 
-    private:
-        std::array<std::array<int, constant::COLUMNS>,constant::ROWS> grid{};
-        void initialize();
+public:
+    Grid();
 
-    public:
-        Grid();
-        void print() const;
-        [[nodiscard]] const int& getCell(int,int) const;
-        void setCell(int,int,int);
+    [[nodiscard]] const int &getCell(int, int) const;
+
+    void setCell(int, int, int);
+
+    // @TODO delete
+    void print() const;
+
+    // @TODO delete
+    void draw() const;
 };
 
 

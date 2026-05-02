@@ -1,16 +1,18 @@
 #include "Grid.h"
-
 #include <algorithm>
 #include <iostream>
 
-Grid::Grid() {
-    initialize();
-}
-
-void Grid::initialize() {
-    for (auto &row : grid) {
-        std::ranges::fill(row, 0);
-    }
+Grid::Grid() : grid{},
+               colors{
+                   constant::m_DARK_GRAY,
+                   constant::m_GREEN,
+                   constant::m_RED,
+                   constant::m_ORANGE,
+                   constant::m_YELLOW,
+                   constant::m_PURPLE,
+                   constant::m_CYAN,
+                   constant::m_BLUE
+               } {
 }
 
 const int &Grid::getCell(const int row, const int column) const {
@@ -21,12 +23,24 @@ void Grid::setCell(const int row, const int column, int value) {
     this->grid[row][column] = value;
 }
 
-// @TODO delete
 void Grid::print() const {
-    std::ranges::for_each(grid.begin(), grid.end(),[](auto & row) {
-        std::ranges::for_each(row.begin(), row.end(),[](auto & col) {
+    std::ranges::for_each(grid.begin(), grid.end(), [](auto &row) {
+        std::ranges::for_each(row.begin(), row.end(), [](auto &col) {
             std::cout << col << " ";
         });
         std::cout << '\n';
     });
+}
+
+void Grid::draw() const {
+    for (int row = 0; row < this->grid.size(); row++) {
+        for (int column = 0; column < this->grid[0].size(); column++) {
+            int cellValue = this->getCell(row, column);
+            DrawRectangle(column * constant::CELL_SIZE + 1,
+                          row * constant::CELL_SIZE + 1,
+                          constant::CELL_SIZE - 1,
+                          constant::CELL_SIZE - 1,
+                          colors.at(cellValue));
+        }
+    }
 }
