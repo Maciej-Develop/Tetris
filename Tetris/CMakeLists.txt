@@ -23,8 +23,12 @@ endif()
 
 add_executable(Tetris main.cpp
         constants.h
-        Grid.cpp
-        Grid.h)
+        model/Grid.cpp
+        model/Grid.h
+        model/Block.cpp
+        model/Block.h
+        model/Position.cpp
+        model/Position.h)
 
 target_link_libraries(${PROJECT_NAME} raylib)
 

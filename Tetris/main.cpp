@@ -2,7 +2,7 @@
 #include <ostream>
 #include <raylib.h>
 #include "constants.h"
-#include "Grid.h"
+#include "model/Grid.h"
 
 int main() {
     InitWindow(constant::WIDTH, constant::HEIGHT, "My Tetris");

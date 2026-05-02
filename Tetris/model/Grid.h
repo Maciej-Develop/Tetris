@@ -3,7 +3,7 @@
 
 #include <array>
 #include <vector>
-#include "constants.h"
+#include "../constants.h"
 
 
 class Grid {
