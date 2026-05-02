@@ -9,6 +9,8 @@ namespace constant {
     inline constexpr int WIDTH = 300;
     inline constexpr int HEIGHT = 600;
 
+    inline constexpr int CELL_SIZE = 30;
+
     // board's size
     inline constexpr int ROWS = 20;
     inline constexpr int COLUMNS = 10;
