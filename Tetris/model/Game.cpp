@@ -1,5 +1,7 @@
 #include "Game.h"
 
+#include <algorithm>
+#include <iostream>
 #include <random>
 
 #include "Blocks/IBlock.h"
@@ -35,16 +37,32 @@ void Game::handleInput() {
     switch (keyPressed) {
         case KEY_DOWN:
             this->currentBlock.moveBlock(1, 0);
+            if (!isBlockInside()) {
+                this->currentBlock.moveBlock(-1, 0);
+            }
             break;
         case KEY_LEFT:
             this->currentBlock.moveBlock(0, -1);
+            if (!isBlockInside()) {
+                this->currentBlock.moveBlock(0, 1);
+            }
             break;
         case KEY_RIGHT:
             this->currentBlock.moveBlock(0, 1);
+            if (!isBlockInside()) {
+                this->currentBlock.moveBlock(0, -1);
+            }
             break;
         default:
             break;
     }
+}
+
+bool Game::isBlockInside() {
+    std::vector<Position> block = this->currentBlock.getCurrentCells();
+    return std::ranges::all_of(block.begin(), block.end(), [&](auto &cell) {
+        return this->grid.isCellInside(cell.getX(), cell.getY());
+    });
 }
 
 void Game::draw() const {

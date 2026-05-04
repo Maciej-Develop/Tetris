@@ -2,6 +2,7 @@
 #include <raylib.h>
 #include "constants.h"
 #include "model/Game.h"
+#include "model/Blocks/LBlock.h"
 
 
 int main() {

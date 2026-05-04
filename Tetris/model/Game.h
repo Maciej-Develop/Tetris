@@ -20,6 +20,8 @@ public:
 
     void handleInput();
 
+    bool isBlockInside();
+
     // @TODO delete
     void draw() const;
 };
