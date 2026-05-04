@@ -30,7 +30,19 @@ add_executable(Tetris main.cpp
         model/Position.cpp
         model/Position.h
         model/Blocks/LBlock.cpp
-        model/Blocks/LBlock.h)
+        model/Blocks/LBlock.h
+        model/Blocks/TBlock.cpp
+        model/Blocks/TBlock.h
+        model/Blocks/OBlock.cpp
+        model/Blocks/OBlock.h
+        model/Blocks/IBlock.cpp
+        model/Blocks/IBlock.h
+        model/Blocks/ZBlock.cpp
+        model/Blocks/ZBlock.h
+        model/Blocks/JBlock.cpp
+        model/Blocks/JBlock.h
+        model/Blocks/SBlock.cpp
+        model/Blocks/SBlock.h)
 
 target_link_libraries(${PROJECT_NAME} raylib)
 

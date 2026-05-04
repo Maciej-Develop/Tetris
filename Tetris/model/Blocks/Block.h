@@ -15,7 +15,7 @@ private:
     std::vector<Color> colors;
 
 public:
-    Block(int, std::vector<std::vector<Position>>&&);
+    Block(int, std::vector<std::vector<Position>>);
 
     [[nodiscard]] const int &getId() const;
 

@@ -5,9 +5,9 @@
 
 #include "../../constants.h"
 
-Block::Block(int id, std::vector<std::vector<Position> > &&cells) : id{id},
+Block::Block(int id, std::vector<std::vector<Position> > cells) : id{id},
                                                                     rotation{0},
-                                                                    cells{cells},
+                                                                    cells{std::move(cells)},
                                                                     colors{
                                                                         constant::m_DARK_GRAY,
                                                                         constant::m_GREEN,
