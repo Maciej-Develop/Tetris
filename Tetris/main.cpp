@@ -3,6 +3,7 @@
 #include <raylib.h>
 #include "constants.h"
 #include "model/Grid.h"
+#include "model/Blocks/IBlock.h"
 #include "model/Blocks/LBlock.h"
 
 int main() {
@@ -10,7 +11,7 @@ int main() {
     SetTargetFPS(60);
 
     Grid g;
-    LBlock l;
+    IBlock l;
 
     // Game Loop
     while (!WindowShouldClose()) {

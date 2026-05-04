@@ -3,4 +3,5 @@
 OBlock::OBlock() : Block(4, {
                              {{0, 0}, {0, 1}, {1, 0}, {1, 1}}
                          }) {
+    this->moveBlock(0, 4);
 };
