@@ -22,6 +22,8 @@ public:
 
     bool isBlockInside();
 
+    void rotateBlock();
+
     // @TODO delete
     void draw() const;
 };

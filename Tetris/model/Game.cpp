@@ -53,6 +53,8 @@ void Game::handleInput() {
                 this->currentBlock.moveBlock(0, -1);
             }
             break;
+        case KEY_UP:
+            this->rotateBlock();
         default:
             break;
     }
@@ -63,6 +65,13 @@ bool Game::isBlockInside() {
     return std::ranges::all_of(block.begin(), block.end(), [&](auto &cell) {
         return this->grid.isCellInside(cell.getX(), cell.getY());
     });
+}
+
+void Game::rotateBlock() {
+    this->currentBlock.rotate();
+    if (!isBlockInside()) {
+        this->currentBlock.unrotate();
+    }
 }
 
 void Game::draw() const {

@@ -25,6 +25,10 @@ public:
 
     std::vector<Position> getCurrentCells() const;
 
+    void rotate();
+
+    void unrotate();
+
     // @TODO delete
     void draw() const;
 };

@@ -41,6 +41,21 @@ std::vector<Position> Block::getCurrentCells() const {
     return currentCells;
 }
 
+void Block::rotate() {
+    this->rotation++;
+    if (this->rotation == this->cells.size()) {
+        this->rotation = 0;
+    }
+}
+
+void Block::unrotate() {
+    this->rotation--;
+    if (this->rotation < 0) {
+        this->rotation = this->cells.size() - 1;
+    }
+}
+
+
 void Block::draw() const {
     auto currentCell = getCurrentCells();
     std::ranges::for_each(currentCell, [&](auto &c) {
