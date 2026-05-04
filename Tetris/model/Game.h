@@ -20,6 +20,8 @@ public:
 
     void handleInput();
 
+    void gravity();
+
     bool isBlockInside();
 
     void rotateBlock();

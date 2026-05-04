@@ -60,6 +60,13 @@ void Game::handleInput() {
     }
 }
 
+void Game::gravity() {
+    this->currentBlock.moveBlock(1, 0);
+    if (!isBlockInside()) {
+        this->currentBlock.moveBlock(-1, 0);
+    }
+}
+
 bool Game::isBlockInside() {
     std::vector<Position> block = this->currentBlock.getCurrentCells();
     return std::ranges::all_of(block.begin(), block.end(), [&](auto &cell) {

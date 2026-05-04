@@ -4,6 +4,15 @@
 #include "model/Game.h"
 #include "model/Blocks/LBlock.h"
 
+bool eventTrigger(double interval) {
+    static double lastUpdateTime = 0;
+    double currentTime = GetTime();
+    if (currentTime - lastUpdateTime >= interval ) {
+        lastUpdateTime = currentTime;
+        return true;
+    }
+    return false;
+}
 
 int main() {
     InitWindow(constant::WIDTH, constant::HEIGHT, "My Tetris");
@@ -15,8 +24,13 @@ int main() {
     while (!WindowShouldClose()) {
         BeginDrawing();
         ClearBackground(constant::m_DARK_BLUE);
+
         g.draw();
         g.handleInput();
+
+        if (eventTrigger(0.5)) {
+            g.gravity();
+        }
         EndDrawing();
     }
 
