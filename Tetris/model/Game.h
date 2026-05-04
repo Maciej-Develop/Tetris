@@ -24,7 +24,11 @@ public:
 
     bool isBlockInside();
 
+    bool isBlockClear();
+
     void rotateBlock();
+
+    void lockBlock();
 
     // @TODO delete
     void draw() const;

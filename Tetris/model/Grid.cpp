@@ -26,8 +26,12 @@ void Grid::setCell(const int row, const int column, int value) {
     this->grid[row][column] = value;
 }
 
-bool Grid::isCellInside(int row, int column) {
+bool Grid::isCellInside(int row, int column) const {
     return row >= 0 && row < constant::ROWS && column >= 0 && column < constant::COLUMNS;
+}
+
+bool Grid::isCellEmpty(int row, int column) const {
+    return this->grid[row][column] == 0;
 }
 
 void Grid::print() const {

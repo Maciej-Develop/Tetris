@@ -19,7 +19,9 @@ public:
 
     void setCell(int, int, int);
 
-    bool isCellInside(int, int);
+    [[nodiscard]] bool isCellInside(int, int) const;
+
+    [[nodiscard]] bool isCellEmpty(int, int) const;
 
     // @TODO delete
     void print() const;
