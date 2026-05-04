@@ -1,3 +1,4 @@
+#include <iostream>
 #include <raylib.h>
 #include "constants.h"
 #include "model/Game.h"
@@ -14,6 +15,7 @@ int main() {
         BeginDrawing();
         ClearBackground(constant::m_DARK_BLUE);
         g.draw();
+        g.handleInput();
         EndDrawing();
     }
 

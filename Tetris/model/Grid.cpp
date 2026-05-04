@@ -20,7 +20,14 @@ const int &Grid::getCell(const int row, const int column) const {
 }
 
 void Grid::setCell(const int row, const int column, int value) {
+    if (!isCellInside(row,column)) {
+        throw std::out_of_range("out of range");
+    }
     this->grid[row][column] = value;
+}
+
+bool Grid::isCellInside(int row, int column) {
+    return row >= 0 && row < constant::ROWS && column >= 0 && column < constant::COLUMNS;
 }
 
 void Grid::print() const {

@@ -30,6 +30,23 @@ Block Game::getRandomBlock() {
     return b;
 }
 
+void Game::handleInput() {
+    int keyPressed = GetKeyPressed();
+    switch (keyPressed) {
+        case KEY_DOWN:
+            this->currentBlock.moveBlock(1, 0);
+            break;
+        case KEY_LEFT:
+            this->currentBlock.moveBlock(0, -1);
+            break;
+        case KEY_RIGHT:
+            this->currentBlock.moveBlock(0, 1);
+            break;
+        default:
+            break;
+    }
+}
+
 void Game::draw() const {
     this->grid.draw();
     this->currentBlock.draw();

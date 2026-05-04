@@ -18,6 +18,8 @@ public:
 
     Block getRandomBlock();
 
+    void handleInput();
+
     // @TODO delete
     void draw() const;
 };

@@ -3,6 +3,7 @@
 
 #include <array>
 #include <vector>
+#include "raylib.h"
 #include "../constants.h"
 
 
@@ -17,6 +18,8 @@ public:
     [[nodiscard]] const int &getCell(int, int) const;
 
     void setCell(int, int, int);
+
+    bool isCellInside(int, int);
 
     // @TODO delete
     void print() const;
