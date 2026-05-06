@@ -97,6 +97,7 @@ void Game::lockBlock() {
     }
     this->currentBlock = this->nextBlock;
     this->nextBlock = getRandomBlock();
+    this->grid.clearFullRows();
 }
 
 void Game::draw() const {

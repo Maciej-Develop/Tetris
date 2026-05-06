@@ -16,14 +16,14 @@ Grid::Grid() : grid{},
 }
 
 const int &Grid::getCell(const int row, const int column) const {
-    return this->grid[row][column];
+    return this->grid.at(row).at(column);
 }
 
 void Grid::setCell(const int row, const int column, int value) {
-    if (!isCellInside(row,column)) {
+    if (!isCellInside(row, column)) {
         throw std::out_of_range("out of range");
     }
-    this->grid[row][column] = value;
+    this->grid.at(row).at(column) = value;
 }
 
 bool Grid::isCellInside(int row, int column) const {
@@ -31,7 +31,41 @@ bool Grid::isCellInside(int row, int column) const {
 }
 
 bool Grid::isCellEmpty(int row, int column) const {
-    return this->grid[row][column] == 0;
+    return this->grid.at(row).at(column) == 0;
+}
+
+bool Grid::isRowFull(int row) const {
+    for (int column = 0; column < constant::COLUMNS; column++) {
+        if (this->grid.at(row).at(column) == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+void Grid::clearRow(int row) {
+    for (int column = 0; column < constant::COLUMNS; column++) {
+        this->grid.at(row).at(column) = 0;
+    }
+}
+
+void Grid::moveRowDown(int row, int numRow) {
+    for (int column = 0; column < constant::COLUMNS; column++) {
+        this->grid.at(row + numRow).at(column) = this->grid.at(row).at(column);
+        this->grid.at(row).at(column) = 0;
+    }
+}
+
+void Grid::clearFullRows() {
+    int fullRows = 0;
+    for (int row = constant::ROWS - 1; row >= 0; row--) {
+        if (isRowFull(row)) {
+            clearRow(row);
+            fullRows++;
+        } else if (fullRows > 0) {
+            moveRowDown(row, fullRows);
+        }
+    }
 }
 
 void Grid::print() const {
@@ -44,8 +78,8 @@ void Grid::print() const {
 }
 
 void Grid::draw() const {
-    for (int row = 0; row < this->grid.size(); row++) {
-        for (int column = 0; column < this->grid[0].size(); column++) {
+    for (int row = 0; row < constant::ROWS; row++) {
+        for (int column = 0; column < constant::COLUMNS; column++) {
             int cellValue = this->getCell(row, column);
             DrawRectangle(column * constant::CELL_SIZE + 1,
                           row * constant::CELL_SIZE + 1,

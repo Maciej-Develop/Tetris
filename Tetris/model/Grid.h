@@ -23,6 +23,14 @@ public:
 
     [[nodiscard]] bool isCellEmpty(int, int) const;
 
+    [[nodiscard]] bool isRowFull(int) const;
+
+    void clearRow(int);
+
+    void moveRowDown(int, int);
+
+    void clearFullRows();
+
     // @TODO delete
     void print() const;
 
