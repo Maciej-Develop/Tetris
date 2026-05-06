@@ -10,6 +10,7 @@ private:
     std::vector<Block> blocks;
     Block currentBlock;
     Block nextBlock;
+    bool isGameOver;
 
     std::vector<Block> getAllBlocks();
 
@@ -29,6 +30,8 @@ public:
     void rotateBlock();
 
     void lockBlock();
+
+    void reset();
 
     // @TODO delete
     void draw() const;

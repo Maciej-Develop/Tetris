@@ -28,7 +28,7 @@ int main() {
         g.draw();
         g.handleInput();
 
-        if (eventTrigger(0.5)) {
+        if (eventTrigger(0.05)) {
             g.gravity();
         }
         EndDrawing();

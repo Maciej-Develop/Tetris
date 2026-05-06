@@ -68,6 +68,14 @@ void Grid::clearFullRows() {
     }
 }
 
+void Grid::reset() {
+    for (int row = 0; row < constant::ROWS; row++) {
+        for (int column = 0; column < constant::COLUMNS; column++) {
+            this->grid.at(row).at(column) = 0;
+        }
+    }
+}
+
 void Grid::print() const {
     std::ranges::for_each(grid.begin(), grid.end(), [](auto &row) {
         std::ranges::for_each(row.begin(), row.end(), [](auto &col) {

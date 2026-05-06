@@ -15,7 +15,8 @@
 Game::Game() : grid(Grid()),
                blocks(getAllBlocks()),
                currentBlock(getRandomBlock()),
-               nextBlock(getRandomBlock()) {
+               nextBlock(getRandomBlock()),
+               isGameOver(false) {
 }
 
 std::vector<Block> Game::getAllBlocks() {
@@ -34,38 +35,52 @@ Block Game::getRandomBlock() {
 
 void Game::handleInput() {
     int keyPressed = GetKeyPressed();
+    if (this->isGameOver && keyPressed != 0) {
+        this->isGameOver = false;
+        reset();
+    }
     switch (keyPressed) {
         case KEY_DOWN:
-            this->currentBlock.moveBlock(1, 0);
-            if (!isBlockInside() || !isBlockClear()) {
-                this->currentBlock.moveBlock(-1, 0);
-                lockBlock();
+            if (!this->isGameOver) {
+                this->currentBlock.moveBlock(1, 0);
+                if (!isBlockInside() || !isBlockClear()) {
+                    this->currentBlock.moveBlock(-1, 0);
+                    lockBlock();
+                }
             }
             break;
         case KEY_LEFT:
-            this->currentBlock.moveBlock(0, -1);
-            if (!isBlockInside() || !isBlockClear()) {
-                this->currentBlock.moveBlock(0, 1);
+            if (!this->isGameOver) {
+                this->currentBlock.moveBlock(0, -1);
+                if (!isBlockInside() || !isBlockClear()) {
+                    this->currentBlock.moveBlock(0, 1);
+                }
             }
             break;
         case KEY_RIGHT:
-            this->currentBlock.moveBlock(0, 1);
-            if (!isBlockInside() || !isBlockClear()) {
-                this->currentBlock.moveBlock(0, -1);
+            if (!this->isGameOver) {
+                this->currentBlock.moveBlock(0, 1);
+                if (!isBlockInside() || !isBlockClear()) {
+                    this->currentBlock.moveBlock(0, -1);
+                }
             }
             break;
         case KEY_UP:
-            this->rotateBlock();
+            if (!this->isGameOver) {
+                this->rotateBlock();
+            }
         default:
             break;
     }
 }
 
 void Game::gravity() {
-    this->currentBlock.moveBlock(1, 0);
-    if (!isBlockInside() || !isBlockClear()) {
-        this->currentBlock.moveBlock(-1, 0);
-        lockBlock();
+    if (!this->isGameOver) {
+        this->currentBlock.moveBlock(1, 0);
+        if (!isBlockInside() || !isBlockClear()) {
+            this->currentBlock.moveBlock(-1, 0);
+            lockBlock();
+        }
     }
 }
 
@@ -91,13 +106,25 @@ void Game::rotateBlock() {
 }
 
 void Game::lockBlock() {
+    std::cout << "lock" << '\n';
     std::vector<Position> block = this->currentBlock.getCurrentCells();
-    for (auto &cell : block) {
-        grid.setCell(cell.getX(),cell.getY(), currentBlock.getId());
+    for (auto &cell: block) {
+        grid.setCell(cell.getX(), cell.getY(), currentBlock.getId());
     }
     this->currentBlock = this->nextBlock;
-    this->nextBlock = getRandomBlock();
-    this->grid.clearFullRows();
+    if (!isBlockClear()) {
+        this->isGameOver = true;
+    } else {
+        this->nextBlock = getRandomBlock();
+        this->grid.clearFullRows();
+    }
+}
+
+void Game::reset() {
+    grid.reset();
+    blocks = getAllBlocks();
+    currentBlock = getRandomBlock();
+    nextBlock = getRandomBlock();
 }
 
 void Game::draw() const {

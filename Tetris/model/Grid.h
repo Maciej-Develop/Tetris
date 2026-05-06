@@ -31,6 +31,8 @@ public:
 
     void clearFullRows();
 
+    void reset();
+
     // @TODO delete
     void print() const;
 
