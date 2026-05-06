@@ -1,3 +1,4 @@
+#include <charconv>
 #include <iostream>
 #include <raylib.h>
 #include "constants.h"
@@ -36,8 +37,14 @@ int main() {
         if (g.getIsGameOver()) {
             DrawText("GAME OVER", 318, 450, 38, WHITE);
         }
-        DrawRectangleRounded({350,55, 170, 60},0.3,6, constant::m_LIGHT_BLUE);
-        DrawRectangleRounded({350,215, 170, 180},0.3,6, constant::m_LIGHT_BLUE);
+        DrawRectangleRounded({350, 55, 170, 60}, 0.3, 6, constant::m_LIGHT_BLUE);
+
+        char scoreText[10];
+        sprintf(scoreText, "%d", g.getScore());
+        int textSize = MeasureText(scoreText, 38);
+        DrawText(scoreText, 350 + (170 - textSize)/2, 67    , 38, WHITE);
+
+        DrawRectangleRounded({350, 215, 170, 180}, 0.3, 6, constant::m_LIGHT_BLUE);
 
         EndDrawing();
     }

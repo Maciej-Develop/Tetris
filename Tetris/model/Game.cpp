@@ -16,7 +16,8 @@ Game::Game() : grid(Grid()),
                blocks(getAllBlocks()),
                currentBlock(getRandomBlock()),
                nextBlock(getRandomBlock()),
-               isGameOver(false) {
+               isGameOver(false),
+               score(0) {
 }
 
 std::vector<Block> Game::getAllBlocks() {
@@ -37,6 +38,10 @@ bool Game::getIsGameOver() const {
     return this->isGameOver;
 }
 
+int Game::getScore() const {
+    return this->score;
+}
+
 void Game::handleInput() {
     int keyPressed = GetKeyPressed();
     if (this->isGameOver && keyPressed != 0) {
@@ -51,6 +56,7 @@ void Game::handleInput() {
                     this->currentBlock.moveBlock(-1, 0);
                     lockBlock();
                 }
+                updateScore(0, 1);
             }
             break;
         case KEY_LEFT:
@@ -118,10 +124,20 @@ void Game::lockBlock() {
     this->currentBlock = this->nextBlock;
     if (!isBlockClear()) {
         this->isGameOver = true;
-    } else {
-        this->nextBlock = getRandomBlock();
-        this->grid.clearFullRows();
     }
+    this->nextBlock = getRandomBlock();
+    int clears = this->grid.clearFullRows();
+    updateScore(clears, 0);
+}
+
+void Game::updateScore(int linesCleared, int moveDownPoints) {
+    if (linesCleared == 1) {
+        score += 100;
+    } else if (linesCleared > 1) {
+        score += 100 + 200 * (linesCleared - 1);
+    }
+
+    score += moveDownPoints;
 }
 
 void Game::reset() {
@@ -129,6 +145,7 @@ void Game::reset() {
     blocks = getAllBlocks();
     currentBlock = getRandomBlock();
     nextBlock = getRandomBlock();
+    score = 0;
 }
 
 void Game::draw() const {

@@ -11,6 +11,7 @@ private:
     Block currentBlock;
     Block nextBlock;
     bool isGameOver;
+    int score;
 
     std::vector<Block> getAllBlocks();
 
@@ -20,6 +21,8 @@ public:
     Block getRandomBlock();
 
     bool getIsGameOver() const;
+
+    int getScore() const;
 
     void handleInput();
 
@@ -32,6 +35,8 @@ public:
     void rotateBlock();
 
     void lockBlock();
+
+    void updateScore(int, int);
 
     void reset();
 

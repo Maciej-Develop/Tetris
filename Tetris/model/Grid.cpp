@@ -56,7 +56,7 @@ void Grid::moveRowDown(int row, int numRow) {
     }
 }
 
-void Grid::clearFullRows() {
+int Grid::clearFullRows() {
     int fullRows = 0;
     for (int row = constant::ROWS - 1; row >= 0; row--) {
         if (isRowFull(row)) {
@@ -66,6 +66,7 @@ void Grid::clearFullRows() {
             moveRowDown(row, fullRows);
         }
     }
+    return fullRows;
 }
 
 void Grid::reset() {

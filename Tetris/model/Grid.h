@@ -29,7 +29,7 @@ public:
 
     void moveRowDown(int, int);
 
-    void clearFullRows();
+    int clearFullRows();
 
     void reset();
 
