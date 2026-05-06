@@ -19,6 +19,8 @@ public:
 
     Block getRandomBlock();
 
+    bool getIsGameOver() const;
+
     void handleInput();
 
     void gravity();

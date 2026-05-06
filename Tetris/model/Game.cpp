@@ -33,6 +33,10 @@ Block Game::getRandomBlock() {
     return b;
 }
 
+bool Game::getIsGameOver() const {
+    return this->isGameOver;
+}
+
 void Game::handleInput() {
     int keyPressed = GetKeyPressed();
     if (this->isGameOver && keyPressed != 0) {

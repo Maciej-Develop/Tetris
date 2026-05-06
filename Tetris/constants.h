@@ -5,8 +5,8 @@
 
 namespace constant {
     // window's size
-    inline constexpr int WIDTH = 300;
-    inline constexpr int HEIGHT = 600;
+    inline constexpr int WIDTH = 550;
+    inline constexpr int HEIGHT = 620;
 
     inline constexpr int CELL_SIZE = 30;
 
@@ -16,6 +16,7 @@ namespace constant {
 
     // Colors
     inline constexpr Color m_DARK_BLUE = {44, 44, 127, 255};
+    inline constexpr Color m_LIGHT_BLUE = {59, 85, 162, 255};
 
     inline constexpr Color m_DARK_GRAY = {26, 31, 40, 255};
     inline constexpr Color m_GREEN = {47, 230, 23, 255};

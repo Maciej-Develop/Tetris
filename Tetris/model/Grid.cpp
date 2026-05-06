@@ -89,8 +89,8 @@ void Grid::draw() const {
     for (int row = 0; row < constant::ROWS; row++) {
         for (int column = 0; column < constant::COLUMNS; column++) {
             int cellValue = this->getCell(row, column);
-            DrawRectangle(column * constant::CELL_SIZE + 1,
-                          row * constant::CELL_SIZE + 1,
+            DrawRectangle(column * constant::CELL_SIZE + 11,
+                          row * constant::CELL_SIZE + 11,
                           constant::CELL_SIZE - 1,
                           constant::CELL_SIZE - 1,
                           colors.at(cellValue));

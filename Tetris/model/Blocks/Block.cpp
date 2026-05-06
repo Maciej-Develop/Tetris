@@ -59,8 +59,8 @@ void Block::unrotate() {
 void Block::draw() const {
     auto currentCell = getCurrentCells();
     std::ranges::for_each(currentCell, [&](auto &c) {
-        DrawRectangle(c.getY() * constant::CELL_SIZE + 1,
-                      c.getX() * constant::CELL_SIZE + 1,
+        DrawRectangle(c.getY() * constant::CELL_SIZE + 11,
+                      c.getX() * constant::CELL_SIZE + 11,
                       constant::CELL_SIZE - 1,
                       constant::CELL_SIZE - 1,
                       colors.at(id));
