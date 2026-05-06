@@ -30,7 +30,7 @@ public:
     void unrotate();
 
     // @TODO delete
-    void draw() const;
+    void draw(int, int) const;
 };
 
 

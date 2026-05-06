@@ -56,11 +56,11 @@ void Block::unrotate() {
 }
 
 
-void Block::draw() const {
+void Block::draw(int offsetX, int offsetY) const {
     auto currentCell = getCurrentCells();
     std::ranges::for_each(currentCell, [&](auto &c) {
-        DrawRectangle(c.getY() * constant::CELL_SIZE + 11,
-                      c.getX() * constant::CELL_SIZE + 11,
+        DrawRectangle(c.getY() * constant::CELL_SIZE + offsetX,
+                      c.getX() * constant::CELL_SIZE + offsetY,
                       constant::CELL_SIZE - 1,
                       constant::CELL_SIZE - 1,
                       colors.at(id));

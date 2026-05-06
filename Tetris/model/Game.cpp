@@ -150,5 +150,6 @@ void Game::reset() {
 
 void Game::draw() const {
     this->grid.draw();
-    this->currentBlock.draw();
+    this->currentBlock.draw(11, 11);
+    this->nextBlock.draw(295, 270);
 }

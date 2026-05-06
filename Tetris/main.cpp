@@ -25,9 +25,6 @@ int main() {
         BeginDrawing();
         ClearBackground(constant::m_DARK_BLUE);
 
-        g.draw();
-        g.handleInput();
-
         if (eventTrigger(0.5)) {
             g.gravity();
         }
@@ -42,9 +39,12 @@ int main() {
         char scoreText[10];
         sprintf(scoreText, "%d", g.getScore());
         int textSize = MeasureText(scoreText, 38);
-        DrawText(scoreText, 350 + (170 - textSize)/2, 67    , 38, WHITE);
+        DrawText(scoreText, 350 + (170 - textSize) / 2, 67, 38, WHITE);
 
         DrawRectangleRounded({350, 215, 170, 180}, 0.3, 6, constant::m_LIGHT_BLUE);
+
+        g.draw();
+        g.handleInput();
 
         EndDrawing();
     }
